@@ -39,9 +39,6 @@ public class REcompiler {
 	}
 	
 	static boolean isvocab(char currChar) {
-		if(currChar == 'a') {
-			return true;
-		}
-	return false;
+		return Character.isLetterOrDigit(currChar);
 	}
 }
