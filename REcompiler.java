@@ -1,37 +1,56 @@
+//output is int,char,int,int
+
 public class REcompiler {
+	public static int inputIndex = 0;
 	public static void main(String[] args) {	
-		int inputIndex = 0;
 		String regEx = args[0];
+		regEx += '\0';
 		char[] regString = regEx.toCharArray();
-		parse(regString,inputIndex);
+		System.err.println(regString);
+		parse(regString);
 	}
 	
-	static void expression(char[] regString, int inputIndex) {
-	  term(regString,inputIndex);
-	  if(isvocab(regString[inputIndex])||regString[inputIndex]=='(')
-		expression(regString,inputIndex);
+	static void expression(char[] regString) {
+	  term(regString);
+	  if(isvocab(regString[inputIndex])||regString[inputIndex]=='(') {
+		  expression(regString);
+	  }
 	}
 
-	static void term(char[] regString, int inputIndex) {
-	  factor(regString, inputIndex);
-	  if(regString[inputIndex]=='*') inputIndex++;
-	  if(regString[inputIndex]=='+'){    inputIndex++;     term(regString, inputIndex); }
+	static void term(char[] regString) {
+	  factor(regString);
+	  if(regString[inputIndex]=='*') {
+		  inputIndex++;
+	  }
+	  if(regString[inputIndex]=='+'){ 
+		  inputIndex++;
+		  term(regString);
+	  }
 	}
 
-	static void factor(char[] regString, int inputIndex) {
-	  if(isvocab(regString[inputIndex])) inputIndex++;
+	static void factor(char[] regString) {
+	  if(isvocab(regString[inputIndex])) {
+		  inputIndex++;
+	  }
 	  else
 	    if(regString[inputIndex]=='('){
-	      inputIndex++;    expression(regString,inputIndex);
-	      if(regString[inputIndex]==')') inputIndex++;
+	      inputIndex++; 
+	      expression(regString);
+	      if(regString[inputIndex]==')') {
+	    	  inputIndex++;
+	      }
 	      else error();
 	    }
 	    else error();
 	}
 
-	static void parse(char[] regString, int inputIndex) {
-	   expression(regString,inputIndex);
-	   if(regString[inputIndex] != '\0') error();
+	static void parse(char[] regString) {
+		
+	   expression(regString);
+	   if(regString[inputIndex] != '\0' ) {
+		   error();
+	   }
+	   System.err.println("REACHED END");
 	}
 	
 	static void error() {
