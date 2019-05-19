@@ -53,5 +53,18 @@ class Dequeue
 		{
 			return false;
 		}
+	} 
+	
+	// Checks if the queue portion of the dequeue is empty
+	public boolean queueEmpty()
+	{
+		if(queue.size() == 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }
