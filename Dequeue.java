@@ -67,4 +67,12 @@ class Dequeue
 			return false;
 		}
 	}
+	
+	// Clears both stack and queue portion of dequeue and adds start state into stack
+	public void reset(int startState)
+	{
+		stack.clear();
+		queue.clear();
+		stack.add(startState);
+	}
 }
