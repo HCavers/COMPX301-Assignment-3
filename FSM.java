@@ -6,12 +6,19 @@ import java.util.ArrayList;
 class FSM
 {
 	// Variable to hold all states of machine
-	ArrayList<State> machine;
+	private ArrayList<State> machine;
+	private int startState;
 	
 	// Constructor
 	public FSM()
 	{
 		machine = new ArrayList<State>();
+	}
+	
+	// Assigns a value to the start state variable
+	public void setStartState(int input)
+	{
+		startState = input;
 	}
 	
 	// Returns state at position index from machine
