@@ -76,4 +76,30 @@ class State
 			throw new IndexOutOfBoundsException("Index must ne greater than zero");
 		}
 	}
+	
+	// Returns if state is a branching state
+	public boolean isBranch()
+	{
+		if(stateValue == '0')
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	// Returns if state accepts the input given
+	public boolean acceptsInput(char input)
+	{
+		if(stateValue == input)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }
