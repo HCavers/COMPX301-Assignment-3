@@ -136,5 +136,14 @@ class REsearcher
 		}
 	}
 	
+	// Searches for pattern in input from position startIndex
 	public static boolean patternSearch(String input, int startIndex){ return false;}
+	
+	// Returns a new Dequeue with the index of the start state in the stack
+	public static Dequeue initialiseDequeue()
+	{
+		Dequeue deq = new Dequeue();
+		deq.push(fsm.getStartState());
+		return deq;
+	}
 }
