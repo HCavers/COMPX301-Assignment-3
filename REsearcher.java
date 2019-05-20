@@ -122,5 +122,19 @@ class REsearcher
 		}
 	}
 	
-	public static void processLine(String line){}
+	// Loops through each char in line checking if pattern 
+	// occurs and prints line to standard out if it does
+	public static void processLine(String line)
+	{
+		for(int i = 0; i < line.length(); i++)
+		{
+			if(patternSearch(line, i) == true)
+			{
+				System.out.println(line);
+				return;
+			}
+		}
+	}
+	
+	public static boolean patternSearch(String input, int startIndex){ return false;}
 }
