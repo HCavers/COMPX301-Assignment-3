@@ -137,7 +137,67 @@ class REsearcher
 	}
 	
 	// Searches for pattern in input from position startIndex
-	public static boolean patternSearch(String input, int startIndex){ return false;}
+	public static boolean patternSearch(String input, int startIndex)
+	{
+		int index = startIndex;
+		Dequeue deq = initialiseDequeue();
+		while(true)
+		{
+			if(deq.stackEmpty())
+			{
+				return false;
+			}
+			if(deq.stackLength() == 1)
+			{
+				int value = deq.pop();
+				if(value == fsm.getFinalState())
+				{
+					return true;
+				}
+				deq.push(value);
+			}
+			if(index >= input.length())
+			{
+				return false;
+			}
+			while(!(deq.stackEmpty()))
+			{
+				int stateIndex = deq.pop();
+				State state = fsm.getState(stateIndex);
+				
+				if(!(state.isBranch()))
+				{
+					char value = input.charAt(index);
+					if(state.acceptsInput(value))
+					{
+						if(state.getNextState1() == state.getNextState2())
+						{
+							deq.put(state.getNextState1());
+						}
+						else
+						{
+							deq.put(state.getNextState1());
+							deq.put(state.getNextState2());
+						}
+					}
+				}
+				else
+				{
+					if(state.getNextState1() == state.getNextState2())
+					{
+						deq.push(state.getNextState1());
+					}
+					else
+					{
+						deq.push(state.getNextState1());
+						deq.push(state.getNextState2());
+					}
+				}
+			}
+			deq.resetSP();
+			index++;
+		}
+	}
 	
 	// Returns a new Dequeue with the index of the start state in the stack
 	public static Dequeue initialiseDequeue()
