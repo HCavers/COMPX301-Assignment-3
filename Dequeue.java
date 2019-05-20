@@ -55,6 +55,12 @@ class Dequeue
 		}
 	} 
 	
+	// Returns the number of items in the stack
+	public int stackLength()
+	{
+		return stack.size();
+	}
+	
 	// Checks if the queue portion of the dequeue is empty
 	public boolean queueEmpty()
 	{
