@@ -39,4 +39,14 @@ class FSM
 	{
 		machine.add(state);
 	}
+	
+	// Prints each state in machine to standard out
+	public void print()
+	{
+		for(State s : machine)
+		{
+			s.print();
+		}
+		System.out.print(String.format("Start State: %s", startState));
+	}
 }
