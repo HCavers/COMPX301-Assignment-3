@@ -21,6 +21,18 @@ class FSM
 		startState = input;
 	}
 	
+	// Returns the index of the start state
+	public int getStartState()
+	{
+		return startState;
+	}
+	
+	// Returns the index of the final state
+	public int getFinalState()
+	{
+		return (machine.size() - 1);
+	}
+	
 	// Returns state at position index from machine
 	public State getState(int index)
 	{
