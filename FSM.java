@@ -33,4 +33,10 @@ class FSM
 		State state = new State(index, value, n1, n2);
 		machine.add(state);
 	}
+	
+	// Add new state to machine
+	public void addState(State state)
+	{
+		machine.add(state);
+	}
 }
