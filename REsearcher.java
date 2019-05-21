@@ -94,7 +94,7 @@ class REsearcher
 			char stateValue;
 			if(input[1].equals(""))
 			{
-				stateValue = '0';
+				stateValue = 0;
 			}
 			else
 			{
