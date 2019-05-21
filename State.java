@@ -80,7 +80,7 @@ class State
 	// Returns if state is a branching state
 	public boolean isBranch()
 	{
-		if(stateValue == '0')
+		if(stateValue == 0)
 		{
 			return true;
 		}
