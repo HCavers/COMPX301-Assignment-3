@@ -53,5 +53,32 @@ class Dequeue
 		{
 			return false;
 		}
+	} 
+	
+	// Returns the number of items in the stack
+	public int stackLength()
+	{
+		return stack.size();
+	}
+	
+	// Checks if the queue portion of the dequeue is empty
+	public boolean queueEmpty()
+	{
+		if(queue.size() == 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	// Clears both stack and queue portion of dequeue and adds start state into stack
+	public void reset(int startState)
+	{
+		stack.clear();
+		queue.clear();
+		stack.add(startState);
 	}
 }

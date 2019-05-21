@@ -76,4 +76,41 @@ class State
 			throw new IndexOutOfBoundsException("Index must ne greater than zero");
 		}
 	}
+	
+	// Returns if state is a branching state
+	public boolean isBranch()
+	{
+		if(stateValue == 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	// Returns if state accepts the input given
+	public boolean acceptsInput(char input)
+	{
+		if(stateValue == input)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	// Prints contents of state to standard out
+	public void print()
+	{
+		String s1 = String.format("State Index: %s", stateNum);
+		String s2 = String.format("State Value: %s", stateValue);
+		String s3 = String.format("1st Next State: %s", nextState1);
+		String s4 = String.format("2nd Next State: %s", nextState2);
+		String line = String.format("%s \t %s \t %s \t %s", s1, s2, s3, s4);
+		System.out.println(line);
+	}
 }
