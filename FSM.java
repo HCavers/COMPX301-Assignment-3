@@ -52,7 +52,7 @@ class FSM
 		machine.add(state);
 	}
 	
-	// Prints each state in machine to standard out
+	// Prints each state in machine to standard out (For debugging purposes)
 	public void print()
 	{
 		for(State s : machine)
