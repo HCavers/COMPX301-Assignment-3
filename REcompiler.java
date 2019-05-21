@@ -3,11 +3,11 @@
 public class REcompiler {
 	public static int inputIndex = 0;
 	public static int j = 0;
-	char[] p;
-	int state = 0;
-	char[] ch;
-	int[] next1;
-	int[] next2;
+	static char[] p;
+	static int state = 0;
+	static char[] ch;
+	static int[] next1;
+	static int[] next2;
 	public static void main(String[] args) {	
 		String regEx = args[0];
 		regEx += '\0';
@@ -16,11 +16,11 @@ public class REcompiler {
 		parse(regString);
 	}
 	
-	void set_state(int s, char c, int n1, int n2){
+	static void set_state(int s, char c, int n1, int n2){
 		ch[s]=c;next1[s]=n1;next2[s]=n2;
 	}
 
-	int compileExpression()
+	static int compileExpression()
 	{
 	  int r;
 
@@ -31,7 +31,7 @@ public class REcompiler {
 	  return(r);
 	}
 
-	int compileTerm()
+	static int compileTerm()
 	{
 	  int r, t1,t2,f;
 
@@ -55,7 +55,7 @@ public class REcompiler {
 	  return(r);
 	}
 
-	int compileFactor()
+	static int compileFactor()
 	{
 	  int r= 0;
 	  //int r;
@@ -118,6 +118,15 @@ public class REcompiler {
 		   error();
 	   }
 	   System.err.println("REACHED END");
+	}
+	
+	static void compileParse()
+	{
+	  int initial;
+
+	  initial= compileExpression();
+	  if( p[j] == 0) error(); // In C, zero is false, not zero is true
+	  set_state(state,' ',0,0);
 	}
 	
 	static void error() {
