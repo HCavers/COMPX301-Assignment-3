@@ -5,9 +5,11 @@ import java.util.ArrayList;
 
 class Dequeue
 {
+	// Variables
 	private ArrayList<Integer> stack;
 	private ArrayList<Integer> queue;
 	
+	// Constructor
 	public Dequeue()
 	{
 		stack = new ArrayList<Integer>();
