@@ -103,7 +103,7 @@ class State
 		}
 	}
 	
-	// Prints contents of state to standard out
+	// Prints contents of state to standard out (For debugging purposes)
 	public void print()
 	{
 		String s1 = String.format("State Index: %s", stateNum);
