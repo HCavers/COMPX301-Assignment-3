@@ -109,7 +109,7 @@ public class REcompiler {
 	
 	static void compileParse() { // Compiles the regexp string into a finite state machine
 		startState= compileExpression();
-		if( regString[inputIndex] != '\0' && regString[inputIndex] != '.') { // Checks if the character is not the terminating character
+		if( regString[inputIndex] != '\0') { // Checks if the character is not the terminating character
 			error(); 
 		}
 		set_state(state,' ',0,0); // Print the final state;
