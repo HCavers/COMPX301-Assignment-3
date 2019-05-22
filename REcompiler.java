@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 public class REcompiler {
 	public static int inputIndex = 0;
-	//public static int j = 0;
 	static char[] regString;
 	static int state = 0;
 	static char[] ch = new char[8];
@@ -15,18 +14,12 @@ public class REcompiler {
 		String regEx = args[0];
 		regEx += '\0';
 		regString = regEx.toCharArray();
-		System.err.println(regString);
 		compileParse();
-		int length = ch.length * 4;
-		String[] outputStates = new String[length];
-		
-		for(int i = 0;i < length/4;i++) {
-			outputStates[i*4] = String.valueOf(i);
-			outputStates[i*4 + 1] = String.valueOf(ch[i]);
-			outputStates[i*4 + 2] = String.valueOf(next1[i]);
-			outputStates[i*4 + 3] = String.valueOf(next2[i]);
+		int length = ch.length;
+				
+		for(int i = 0;i < length;i++) {
+			System.out.println(String.valueOf(i) + "," + String.valueOf(ch[i]) + "," + String.valueOf(next1[i]) + "," + String.valueOf(next2[i]));
 		}
-		System.out.println(Arrays.toString(outputStates));
 		System.out.println(startState);
 	}
 	
@@ -51,9 +44,6 @@ public class REcompiler {
 
 	  f=state-1;
 	  r=t1=compileFactor();
-//	  if(p[j] == '?') {
-//		  set_state(state,' ',);
-//	  }
 	  if(regString[inputIndex]=='*'){
 	    set_state(state,' ',state+1,t1);
 	    inputIndex++;
@@ -78,8 +68,6 @@ public class REcompiler {
 
 	static int compileFactor() {
 	  int r= 0;
-	  //int r;
-
 	  if(isvocab(regString[inputIndex])){
 	    set_state(state,regString[inputIndex],state+1,state+1);
 	    inputIndex++;r=state; state++;
@@ -90,14 +78,12 @@ public class REcompiler {
 	      if(regString[inputIndex]==']' || regString[inputIndex] == ')')
 	    	  inputIndex++;
 	      else {
-	    	  
-	      		error();
+	    	  error();
 	      }
 	    	  
 	    }
 	    else {
-	    
-		      error();
+	    	error();
 	    }
 	    	
 	  return(r);
