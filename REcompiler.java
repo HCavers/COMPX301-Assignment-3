@@ -1,3 +1,16 @@
+// Hunter Cavers (1288108)
+// Sivaram Manoharan (1299026)
+
+// Phrase grammer is the same as the one given in the notes (with parentheses instead of square brackets)
+// e.g.:
+//E -> T
+//   E -> T E
+//   T -> F
+//   T -> F*
+//   T -> F+T
+//   F -> v
+//   F -> [E]
+
 public class REcompiler {
 	public static int inputIndex = 0; 
 	static char[] regString; 
