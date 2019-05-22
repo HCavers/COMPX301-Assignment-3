@@ -29,8 +29,12 @@ public class REcompiler {
 		compileParse(); // Compiles the input
 					
 		for(int i = 0;i <= state;i++) {
-			System.out.println(String.valueOf(i) + "," + String.valueOf(ch[i]) + "," + String.valueOf(next1[i]) + "," + String.valueOf(next2[i]));
-			// Prints out each state to output
+			if(ch[i] == ' ') { // If branching state print out everthing except the character
+				System.out.println(String.valueOf(i)  + ",," + String.valueOf(next1[i]) + "," + String.valueOf(next2[i]));
+			}
+			else { // otherwise print out each state to output
+				System.out.println(String.valueOf(i) + "," + String.valueOf(ch[i]) + "," + String.valueOf(next1[i]) + "," + String.valueOf(next2[i]));
+			}
 		}
 		System.out.println(startState); // Prints the start state so the searcher knows where to start
 	}
