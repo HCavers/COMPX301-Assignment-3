@@ -10,19 +10,22 @@ public class REcompiler {
 	static char[] ch = new char[8];
 	static int[] next1 = new int[8];
 	static int[] next2 = new int[8];
+	static int startState;
 	public static void main(String[] args) {	
 		String regEx = args[0];
 		regEx += '\0';
 		char[] regString = regEx.toCharArray();
 		p = regEx.toCharArray();
 		System.err.println(regString);
-		parse(regString);
+		//parse(regString);
 		compileParse();
 //		System.out.println(Arrays.toString(ch));
 //		System.out.println(Arrays.toString(next1));
 //		System.out.println(Arrays.toString(next2));
+		
 		int length = ch.length * 4;
 		String[] outputStates = new String[length];
+		
 		for(int i = 0;i < length/4;i++) {
 			outputStates[i*4] = String.valueOf(i);
 			outputStates[i*4 + 1] = String.valueOf(ch[i]);
@@ -31,7 +34,14 @@ public class REcompiler {
 			
 			//outputStates[i] =  String.valueOf(i) + "," + ch[i] + "," + next1[i] + "," + next2[i];
 		}
+//		String[] startStates = new String[4];
+//		startStates[0] = String.valueOf(startState);
+//		startStates[1] = String.valueOf(ch[startState]);
+//		startStates[2] = String.valueOf(next1[startState]);
+//		startStates[3] = String.valueOf(next2[startState]);
 		System.out.println(Arrays.toString(outputStates));
+//		System.out.println(Arrays.toString(startStates));
+		System.out.println(startState);
 	}
 	
 	static void set_state(int s, char c, int n1, int n2){
@@ -55,6 +65,9 @@ public class REcompiler {
 
 	  f=state-1;
 	  r=t1=compileFactor();
+//	  if(p[j] == '?') {
+//		  set_state(state,' ',);
+//	  }
 	  if(p[j]=='*'){
 	    set_state(state,' ',state+1,t1);
 	    j++;
@@ -154,14 +167,11 @@ public class REcompiler {
 	}
 	
 	static void compileParse() {
-	  int initial;
-
-	  initial= compileExpression();
-	  if( p[j] != '\0') {
-		  
-		  error(); // In C, zero is false, not zero is true
-	  }
-	  set_state(state,' ',0,0);
+		startState= compileExpression();
+		if( p[j] != '\0') {
+			error(); // In C, zero is false, not zero is true
+		}
+		set_state(state,' ',0,0);
 	}
 	
 	static void error() {
