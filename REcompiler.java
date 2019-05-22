@@ -29,7 +29,7 @@ public class REcompiler {
 		compileParse(); // Compiles the input
 					
 		for(int i = 0;i <= state;i++) {
-			if(ch[i] == ' ') { // If branching state print out everthing except the character
+			if(ch[i] == ' ') { // If branching state print out everything except the character
 				System.out.println(String.valueOf(i)  + ",," + String.valueOf(next1[i]) + "," + String.valueOf(next2[i]));
 			}
 			else { // otherwise print out each state to output
@@ -67,7 +67,7 @@ public class REcompiler {
 	    r=state;
 	    state++;
 	  }
-	  if(regString[inputIndex]=='+'){ // checks for + and if so create concatenation 
+	  if(regString[inputIndex]=='+'){ // checks for + 
 	    if(next1[f]==next2[f])
 		next2[f]=state;
 	    next1[f]=state;
@@ -121,7 +121,7 @@ public class REcompiler {
 	}
 	
 	static boolean isvocab(char currChar) {
-		if(Character.isLetterOrDigit(currChar) || currChar == '.') {
+		if(Character.isLetterOrDigit(currChar) || currChar == '.') { // Checks if the character is a letter,digit or wildcard symbol
 			return true;
 		}
 		return false;
