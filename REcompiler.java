@@ -121,6 +121,9 @@ public class REcompiler {
 	}
 	
 	static boolean isvocab(char currChar) {
-		return Character.isLetterOrDigit(currChar);
+		if(Character.isLetterOrDigit(currChar) || currChar == '.') {
+			return true;
+		}
+		return false;
 	}
 }
