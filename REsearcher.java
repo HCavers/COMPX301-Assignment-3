@@ -186,9 +186,9 @@ class REsearcher
 				// if state is not branch
 				if(!(state.isBranch()))
 				{
-					// Check if it accepts value
+					// Check if it accepts value or if state is wildcard
 					char value = input.charAt(index);
-					if(state.acceptsInput(value))
+					if(state.acceptsInput(value) || state.getAcceptedValue() == '.')
 					{
 						// If next states are the same only add on to queue portion of dequeue
 						if(state.getNextState1() == state.getNextState2())
